@@ -466,7 +466,6 @@ $.extend(QueryBuilder.prototype, /** @lends QueryBuilder.prototype */ {
         });
 
         this.$el.triggerHandler(event, Array.prototype.slice.call(arguments, 2));
-
         return event.value;
     },
 
@@ -1249,6 +1248,8 @@ QueryBuilder.prototype.addGroup = function(parent, addRule, data, flags) {
      */
     this.trigger('rulesChanged');
 
+    this.$el.trigger('finishedRendering')
+
     if (addRule) {
         this.addRule(model);
     }
@@ -1298,6 +1299,8 @@ QueryBuilder.prototype.deleteGroup = function(group) {
         this.trigger('afterDeleteGroup');
 
         this.trigger('rulesChanged');
+
+        this.$el.trigger('finishedRendering')
     }
 
     return del;
@@ -1327,6 +1330,8 @@ QueryBuilder.prototype.updateGroupCondition = function(group, previousCondition)
     this.trigger('afterUpdateGroupCondition', group, previousCondition);
 
     this.trigger('rulesChanged');
+
+    this.$el.trigger('finishedRendering')
 };
 
 /**
@@ -1402,6 +1407,7 @@ QueryBuilder.prototype.addRule = function(parent, data, flags) {
         );
     }
 
+    this.$el.trigger('finishedRendering')
     return model;
 };
 
@@ -1439,6 +1445,7 @@ QueryBuilder.prototype.deleteRule = function(rule) {
 
     this.trigger('rulesChanged');
 
+    this.$el.trigger('finishedRendering')
     return true;
 };
 
@@ -1602,6 +1609,8 @@ QueryBuilder.prototype.updateRuleFilter = function(rule, previousFilter) {
     this.trigger('afterUpdateRuleFilter', rule, previousFilter);
 
     this.trigger('rulesChanged');
+
+    this.$el.trigger('finishedRendering')
 };
 
 /**
@@ -1647,6 +1656,8 @@ QueryBuilder.prototype.updateRuleOperator = function(rule, previousOperator) {
     this.trigger('afterUpdateRuleOperator', rule, previousOperator);
 
     this.trigger('rulesChanged');
+
+    this.$el.trigger('finishedRendering')
 };
 
 /**
@@ -1671,6 +1682,8 @@ QueryBuilder.prototype.updateRuleValue = function(rule, previousValue) {
     this.trigger('afterUpdateRuleValue', rule, previousValue);
 
     this.trigger('rulesChanged');
+
+    this.$el.trigger('finishedRendering')
 };
 
 /**
@@ -1877,6 +1890,8 @@ QueryBuilder.prototype.reset = function() {
     this.trigger('afterReset');
 
     this.trigger('rulesChanged');
+
+    this.$el.trigger('finishedRendering')
 };
 
 /**
@@ -1911,6 +1926,8 @@ QueryBuilder.prototype.clear = function() {
     this.trigger('afterClear');
 
     this.trigger('rulesChanged');
+
+    this.$el.trigger('finishedRendering')
 };
 
 /**
@@ -4826,6 +4843,8 @@ QueryBuilder.extend(/** @lends module:plugins.Invert.prototype */ {
             this.trigger('afterInvert', node, options);
 
             this.trigger('rulesChanged');
+
+            this.$el.trigger('finishedRendering')
         }
     }
 });
@@ -5378,6 +5397,8 @@ QueryBuilder.extend(/** @lends module:plugins.NotGroup.prototype */ {
         this.trigger('afterUpdateGroupNot', group);
 
         this.trigger('rulesChanged');
+
+        this.$el.trigger('finishedRendering')
     }
 });
 

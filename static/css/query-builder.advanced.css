@@ -1,0 +1,227 @@
+input {
+    font-family: Roboto,helvetica neue,sans-serif;
+}
+.btn {
+    font-family: Roboto,helvetica neue,sans-serif;
+    text-transform: none;
+}
+.btn i {
+    line-height: 1rem;
+    font-size: 1rem;
+}
+
+.query-builder {
+    background-color: rgb(238, 238, 238);
+}
+
+.no-after::after{
+    display:none !important;
+}
+
+/* Line 6 */
+.query-builder .rules-group-container, .query-builder .rule-container, .query-builder .rule-placeholder {
+    position: relative;
+    margin: 4px 0;
+    border-radius: 0;
+    padding: 0;
+    border: none;
+    background: transparent;
+}
+
+/* Line 104*/
+.query-builder .rules-list > *::before,
+.query-builder .rules-list > *::after {
+    content: '';
+    position: absolute;
+    left: -15px;
+    width: 15px;
+    height: calc(50% + 4px);
+    border-color:#bdbdbd;
+    border-width: 4px;
+    border-style: solid;
+}
+.query-builder .rules-list > *::before {
+    top: 0;
+    border-width: 0 0 0 4px;
+}
+  
+.query-builder .rules-list > *::after {
+    top: 50%;
+    border-width: 4px 0 0 4px;
+}
+
+.query-builder .rules-list > *:first-child::before {
+    display: none;
+}
+
+.query-builder .rules-list > *:last-child::before {
+    top: 0;
+}
+
+.query-builder .rules-list > *:last-child::after {
+    display: block;
+    top: 50%;
+    border-width: 4px 0 0 4px;    
+}
+  
+.query-builder .rules-list .rule-header {
+    display: inline-block;
+}
+
+.query-builder .rules-list .rule-header button i.glyphicon {
+    top: -3px;
+}
+
+.query-builder .rules-list .input-field {
+    border-radius: 2px;
+    background-color: #fff;
+    box-sizing: border-box;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 2px 1px -1px rgba(0,0,0,.12);
+    text-align: left;
+    position: relative;
+}
+
+.query-builder .rules-list .input-field .select-wrapper {
+    padding: 2px 8px;
+}
+
+.query-builder .rules-list .rule-value-container input.form-control,
+.query-builder .rules-list .input-field .select-wrapper input.select-dropdown {
+    border-bottom: 1px solid rgba(255,255,255,.6);
+    color: white;
+    height: 2rem;
+    line-height: 2.5rem;
+    font-size: 14px;
+    margin: 0 0 5px 0;
+    font-weight: bold;
+}
+
+.query-builder .rules-list .rule-value-container input.form-control,
+.query-builder .rules-list .rule-value-container .input-field .select-wrapper input.select-dropdown {
+    color: rgba(0, 0, 0, 0.87);
+    border-bottom: 1px solid rgba(0, 0, 0, .37);
+    font-weight: normal;
+}
+
+.query-builder .rules-list .rule-filter-container .input-field .select-wrapper input.select-dropdown:focus {
+    border-bottom: 2px solid #e1f5fe;
+}
+
+.query-builder .rules-list .rule-operator-container .input-field .select-wrapper input.select-dropdown:focus {
+    border-bottom: 2px solid #01579b;
+}
+
+.query-builder .rules-list .rule-value-container input.form-control:focus,
+.query-builder .rules-list .rule-value-container .input-field .select-wrapper input.select-dropdown:focus {
+    border-bottom: 2px solid #0277bd;
+    box-shadow: none;
+}
+
+.query-builder .rules-list .input-field .select-wrapper .caret {
+    position: absolute;
+    right: 8px;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    z-index: 0;
+    fill: rgba(255, 255, 255, 0.67);
+}
+
+.query-builder .rules-list .rule-value-container .input-field .select-wrapper .caret {
+    fill: rgba(0, 0, 0, 0.67);
+}
+
+.query-builder .rules-list .btn-remove {
+    height: 20px;
+    width: 20px;
+}
+
+.query-builder .rules-list .btn-remove i {
+    line-height: 18px;
+    font-weight: 400;
+    font-size: 12px;
+}
+
+.query-builder .rules-list .input-field .select-wrapper .select-dropdown.dropdown-content li:hover {
+    background-color: rgba(0, 0, 0, .04);
+}
+
+.query-builder .rules-list .input-field .select-wrapper .select-dropdown.dropdown-content li.selected {
+    background-color: rgba(0, 0, 0, .12);
+}  
+
+.query-builder .rules-list .input-field .select-wrapper .dropdown-content li {
+    min-height: 36px;
+    height: 36px;
+    line-height: 36px;
+}
+
+.query-builder .rules-list .input-field .select-wrapper .dropdown-content li > a,
+.query-builder .rules-list .input-field .select-wrapper .dropdown-content li > span {
+    font-size: inherit;
+    color: rgba(0, 0, 0, .87);
+    display: block;
+    line-height: 36px;
+    padding: 0 16px;
+}
+
+.query-builder .rules-list .input-field .select-wrapper .dropdown-content li.selected > a,
+.query-builder .rules-list .input-field .select-wrapper .dropdown-content li.selected > span {
+    color: #0288d1;
+}
+
+.query-builder .rules-list .input-field .select-wrapper .dropdown-content li > span > label {
+    top: 1px;
+    left: 0;
+    height: 16px;
+}
+
+.query-builder .rules-list .input-field .select-wrapper .dropdown-content li > a > i {
+    height: inherit;
+    line-height: inherit;
+    float: left;
+    margin: 0 24px 0 0;
+    width: 24px;
+}
+.query-builder .rules-list .rule-filter-container,
+.query-builder .rules-list .rule-operator-container {
+    padding-right: 5px;
+    position: relative;
+}
+
+.query-builder .rules-list .rule-filter-container::after,
+.query-builder .rules-list .rule-operator-container::after {
+    content: "";
+    display: block;
+    height: 4px;
+    width: 14px;
+    background: #bdbdbd;
+    position: absolute;
+    right: -9px;
+    top: 50%;
+}
+
+.query-builder .rule-value-container {
+    border-left: none;
+    padding-left: 0px;
+}
+
+.query-builder .rules-group-header {
+    margin-top: 20px;
+    margin-bottom: 0px;
+}
+.query-builder .rules-group-header .btn-group {
+    padding-left: 15px;
+    position: relative;
+}
+.query-builder .rules-group-header .btn-group::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: -20px;
+    width: 15px;
+    height: calc(50% + 20px);
+    border-color:#bdbdbd;
+    border-width: 0 0 4px 4px;
+    border-style: solid;
+}
