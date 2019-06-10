@@ -58,7 +58,10 @@ $(document).ready(function(){
         }, {
             id: 'created_at',
             label: 'Created',
-            type: 'datetime',
+            type: 'date',
+            validation: {
+              format: 'YYYY/MM/DD'
+            },
         }, {
             id: 'id',
             label: 'Identifier',

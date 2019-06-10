@@ -3,8 +3,8 @@ function updateQuerybuilderElements() {
   $('.query-builder .rules-list .rule-value-container input.form-control').each(function() {
     if ($(this).parent().hasClass('select-wrapper'))
       return;
-    $(this).parent().prepend('<div class="input-field white lighten-1"><div class="select-wrapper">');
-    $(this).prev().children().first().html($(this));
+    $(this).before(`<div class="input-field white lighten-1"><div class="select-wrapper"></div></div>`);
+    $(this).prev().children().first().append($(this));
   });
 
   $('.rule-container').on('mouseenter', function() {
@@ -155,6 +155,16 @@ $.fn.extend({
       this.on('finishedRendering', function() {
          updateQuerybuilderElements();
       });
+
+      // Fix for Bootstrap Datepicker
+      this.on('afterUpdateRuleValue.queryBuilder', function(e, rule) {
+        if (rule.filter.plugin === 'datepicker') {
+          console.log(rule.$el);
+          rule.$el.find('.rule-value-container input').addClass('datepicker');
+          rule.$el.find('.rule-value-container input').datepicker();
+        }
+      });
+
       updateQuerybuilderElements();
     },
   });
