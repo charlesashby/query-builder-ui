@@ -29,6 +29,7 @@ $(document).ready(function(){
             id: 'price',
             label: 'Price',
             type: 'double',
+            placeholder: 'Enter number (e.g. 3)',
             validation: {
                 min: 0,
                 step: 0.01
@@ -37,6 +38,7 @@ $(document).ready(function(){
             id: 'created_at',
             label: 'Created',
             type: 'date',
+            placeholder: 'Enter date (e. g. 1999/01/19)',
             validation: {
               format: 'YYYY/MM/DD'
             },
