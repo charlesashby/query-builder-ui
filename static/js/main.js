@@ -1,28 +1,6 @@
 
-$(document).ready(function(){
-    var rules_basic = {
-        condition: 'AND',
-        rules: [{
-          id: 'price',
-          operator: 'less',
-          value: 10.25
-        }, {
-          condition: 'OR',
-          rules: [{
-            id: 'category',
-            operator: 'equal',
-            value: 2
-          }, {
-            id: 'category',
-            operator: 'equal',
-            value: 1
-          }]
-        }]
-      };
-      
-    $('#builder').advancedQueryBuilder({
-        //plugins: ['bt-tooltip-errors'],
-        
+$(document).ready(function(){      
+    $('#builder').advancedQueryBuilder({        
         filters: [{
             id: 'category',
             label: 'Category',
@@ -43,8 +21,8 @@ $(document).ready(function(){
             type: 'integer',
             input: 'select',
             values: {
-                1: 'Yes',
-                0: 'No'
+                1: 'True',
+                0: 'False'
             },
             operators: ['equal']
         }, {
@@ -72,8 +50,8 @@ $(document).ready(function(){
                 format: /^.{4}-.{4}-.{4}$/
             }
         }],
-        
-        rules: rules_basic
+        allow_groups: false,
+
     });
 
     $('#get_rule').click(function() {

@@ -1,5 +1,6 @@
 function updateQuerybuilderElements() {
   $('.rules-list .input-field > select').formSelect();
+  
   $('.query-builder .rules-list .rule-value-container input.form-control').each(function() {
     if ($(this).parent().hasClass('select-wrapper'))
       return;
@@ -21,18 +22,30 @@ function updateQuerybuilderElements() {
 
     if (operatorEl.html() === '' || operatorEl.is(":visible") == false){
       $(this).addClass('no-after');
+      operatorEl.addClass('empty-content');
     } else {
       $(this).removeClass('no-after');      
+      operatorEl.removeClass('empty-content');
     }
 
     if (valueEl.html() === '' || valueEl.is(":visible") == false) {
       operatorEl.addClass('no-after');
+      valueEl.addClass('empty-content');
     } else {
       operatorEl.removeClass('no-after');
+      valueEl.removeClass('empty-content');
     }
   });
 
   $('.input-field > span:first-child').hide();
+
+  $('.rules-group-body').each(function() {
+    if ($(this).find('.rules-list').html() === ''){
+      $(this).next().addClass('no-body');
+    } else {
+      $(this).next().removeClass('no-body');
+    }
+  });
 }
 
 $.fn.extend({
@@ -47,7 +60,8 @@ $.fn.extend({
             <div class="rules-group-header"> \
               <div class="btn-group pull-right group-actions"> \
                 <button type="button" class="btn btn-xs waves-effect white grey-text text-darken-4" data-add="rule"> \
-                  <i class="{{= it.icons.add_rule }} green-text text-darken-1"></i> {{= it.translate("add_rule") }} \
+                  <div class="flex-layout layout-row layout-align-start-center"><icon class="add-icon flex-none inherit xlarge" key="add"><svg viewBox="0 0 24 24"><path d="M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M13,7H11V11H7V13H11V17H13V13H17V11H13V7Z"></path></svg></icon>\
+                  <span class="add-filter-label cb-overflow-ellipsis flex-nogrow cb-margin-small-left">{{= it.translate("add_rule")}}</span></div>\
                 </button> \
                 {{? it.settings.allow_groups===-1 || it.settings.allow_groups>=it.level }} \
                   <button type="button" class="btn btn-xs waves-effect white grey-text text-darken-4" data-add="group"> \
@@ -82,9 +96,7 @@ $.fn.extend({
             {{?}} \
             <div class="rule-header" style="display:none;"> \
               <div class="btn-group pull-right rule-actions"> \
-                <button type="button" class="btn btn-floating btn-small waves-effect waves-light grey darken-2 btn-remove" data-delete="rule"> \
-                  <i class="{{= it.icons.remove_rule }} grey-text text-lighten-3"></i> {{= it.translate("delete_rule") }} \
-                </button> \
+                <button class="mat-icon-button" mat-icon-button="" type="button" aria-label="Remove Filter" data-delete="rule"><span class="mat-button-wrapper"><icon key="remove" class="dark xlarge"><svg viewBox="0 0 24 24"><path d="M12,2C17.53,2 22,6.47 22,12C22,17.53 17.53,22 12,22C6.47,22 2,17.53 2,12C2,6.47 6.47,2 12,2M15.59,7L12,10.59L8.41,7L7,8.41L10.59,12L7,15.59L8.41,17L12,13.41L15.59,17L17,15.59L13.41,12L17,8.41L15.59,7Z"></path></svg></icon></span><div class="mat-button-ripple mat-ripple mat-button-ripple-round" matripple=""></div><div class="mat-button-focus-overlay"></div></button>\
               </div> \
             </div> \
           </div>',
