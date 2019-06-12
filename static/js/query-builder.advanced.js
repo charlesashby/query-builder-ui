@@ -1,11 +1,13 @@
 function updateQuerybuilderElements() {
   $('.rules-list .input-field > select').formSelect();
   
-  $('.query-builder .rules-list .rule-value-container input.form-control').each(function() {
+  $('.query-builder .rules-list .rule-value-container > input.form-control').each(function() {
     if ($(this).parent().hasClass('select-wrapper'))
       return;
-    $(this).before(`<div class="input-field white lighten-1"><div class="select-wrapper"></div></div>`);
-    $(this).prev().children().first().append($(this));
+    var valueContainer = $(this).parent();
+    valueContainer.removeClass('rule-value-container').toggleClass('select-wrapper').removeClass('empty-content');
+    valueContainer.prev().after('<div class="rule-value-container"><div class="input-field white lighten-1">');
+    valueContainer.prev().find('.input-field').first().html(valueContainer);
   });
 
   $('.rule-container').on('mouseenter', function() {
@@ -24,7 +26,9 @@ function updateQuerybuilderElements() {
       $(this).addClass('no-after');
       operatorEl.addClass('empty-content');
     } else {
-      $(this).removeClass('no-after');      
+      $(this).removeClass('no-after');
+      $(this).addClass('filter-fixed');
+      $(this).find('input.select-dropdown.dropdown-trigger').attr('disabled', '');
       operatorEl.removeClass('empty-content');
     }
 
@@ -46,6 +50,9 @@ function updateQuerybuilderElements() {
       $(this).next().removeClass('no-body');
     }
   });
+
+  $('.input-seperator').prev().attr('style', 'text-align:center');
+  $('.input-seperator').next().attr('style', 'text-align:center');
 }
 
 $.fn.extend({
@@ -167,14 +174,8 @@ $.fn.extend({
       this.on('finishedRendering', function() {
          updateQuerybuilderElements();
       });
-
-      // Fix for Bootstrap Datepicker
-      this.on('afterUpdateRuleValue.queryBuilder', function(e, rule) {
-        if (rule.filter.plugin === 'datepicker') {
-          console.log(rule.$el);
-          rule.$el.find('.rule-value-container input').addClass('datepicker');
-          rule.$el.find('.rule-value-container input').datepicker();
-        }
+      this.on('afterUpdateRuleFilter.queryBuilder', function() {
+        
       });
 
       updateQuerybuilderElements();

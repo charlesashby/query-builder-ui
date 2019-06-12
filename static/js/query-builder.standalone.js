@@ -850,7 +850,7 @@ QueryBuilder.prototype.init = function(rules) {
         delete this.settings.rules;
     }
     else {
-        this.setRoot(true);
+        this.setRoot(false);
     }
 };
 
@@ -1542,7 +1542,7 @@ QueryBuilder.prototype.createRuleInput = function(rule) {
 
     for (var i = 0; i < rule.operator.nb_inputs; i++) {
         var $ruleInput = $(this.getRuleInput(rule, i));
-        if (i > 0) $valueContainer.append(this.settings.inputs_separator);
+        if (i > 0) $valueContainer.append(`<span class="input-seperator">${this.settings.inputs_separator}</span>`);
         $valueContainer.append($ruleInput);
         $inputs = $inputs.add($ruleInput);
     }

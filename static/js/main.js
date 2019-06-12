@@ -53,7 +53,7 @@ $(document).ready(function(){
             }
         }],
         allow_groups: false,
-
+        inputs_separator: ' and ',
     });
 
     $('#get_rule').click(function() {

@@ -104,13 +104,13 @@ input {
     font-weight: normal;
 }
 
-.query-builder .rules-list .rule-filter-container .input-field .select-wrapper input.select-dropdown {
+.query-builder .rules-list .rule-filter-container.filter-fixed .input-field .select-wrapper input.select-dropdown {
     border-bottom: 0px;
-    margin: 0;
+    margin: 2px 0 3px 0;
     line-height: 100%;
 }
 
-.query-builder .rules-list .rule-filter-container .input-field .select-wrapper .caret {
+.query-builder .rules-list .rule-filter-container.filter-fixed .input-field .select-wrapper .caret {
     display: none;
 }
 
@@ -319,4 +319,13 @@ icon.dark {
     left: 0 !important;
     border-radius: 3px;
     top: -3px !important;
+}
+
+.select-wrapper {
+    display: flex;
+}
+
+.input-seperator {
+    margin: 0 10px;
+    line-height: 38px;
 }
