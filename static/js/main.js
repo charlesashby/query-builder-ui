@@ -6,6 +6,7 @@ $(document).ready(function(){
             label: 'Category',
             type: 'integer',
             input: 'select',
+            multiple: true,
             values: {
                 1: 'Books',
                 2: 'Movies',
@@ -14,7 +15,8 @@ $(document).ready(function(){
                 5: 'Goodies',
                 6: 'Clothes'
             },
-            operators: ['equal', 'not_equal', 'in', 'not_in', 'is_null', 'is_not_null']
+            operators: ['equal', 'not_equal', 'in', 'not_in', 'is_null', 'is_not_null'],
+            placeholder: 'Books, Movies, Music',
         }, {
             id: 'in_stock',
             label: 'In stock',

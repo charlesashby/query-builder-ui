@@ -1,5 +1,16 @@
 function updateQuerybuilderElements() {
-  $('.rules-list .input-field > select').formSelect();
+  $('.rules-list .rule-filter-container .input-field > select').formSelect();
+  $('.rules-list .rule-operator-container .input-field > select').formSelect();
+  var placeholder;
+  if ($('.rules-list .rule-value-container .input-field > select[multiple] option[value="-1"]').text()) {
+    placeholder = $('.rules-list .rule-value-container .input-field > select[multiple] option[value="-1"]').text();
+    $('.rules-list .rule-value-container .input-field > select[multiple] option[value="-1"]').remove();
+    $('.rules-list .rule-value-container .input-field > select[multiple]').attr('placeholder', placeholder);
+  }
+  $('.rules-list .rule-value-container .input-field > select[multiple]').select2({
+    placeholder: $('.rules-list .rule-value-container .input-field > select[multiple]').attr('placeholder'),
+  });
+  $('.rules-list .rule-value-container .input-field > select:not([multiple])').formSelect();
   
   $('.query-builder .rules-list .rule-value-container > input.form-control').each(function() {
     if ($(this).parent().hasClass('select-wrapper'))

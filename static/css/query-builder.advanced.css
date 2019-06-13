@@ -87,6 +87,7 @@ input {
 }
 
 .query-builder .rules-list .rule-value-container input.form-control,
+.query-builder .rules-list .rule-value-container input.select2-search__field,
 .query-builder .rules-list .input-field .select-wrapper input.select-dropdown {
     border-bottom: 1px solid rgba(255,255,255,.6);
     color: white;
@@ -98,6 +99,7 @@ input {
 }
 
 .query-builder .rules-list .rule-value-container input.form-control,
+.query-builder .rules-list .rule-value-container input.select2-search__field,
 .query-builder .rules-list .rule-value-container .input-field .select-wrapper input.select-dropdown {
     color: rgba(0, 0, 0, 0.87);
     border-bottom: 1px solid rgba(0, 0, 0, .37);
@@ -119,6 +121,7 @@ input {
 }
 
 .query-builder .rules-list .rule-value-container input.form-control:focus,
+.query-builder .rules-list .rule-value-container input.select2-search__field:focus,
 .query-builder .rules-list .rule-value-container .input-field .select-wrapper input.select-dropdown:focus {
     border-bottom: 1px solid #0277bd;
     box-shadow: none;
@@ -328,4 +331,10 @@ icon.dark {
 .input-seperator {
     margin: 0 10px;
     line-height: 38px;
+}
+
+.rules-list .rule-value-container .input-field > select {
+    display: block;
+    width: 200px;
+    height: inherit;
 }
