@@ -338,3 +338,12 @@ icon.dark {
     width: 200px;
     height: inherit;
 }
+
+.search-icon {
+    width: 16px;
+    position: absolute;
+}
+
+.search-icon icon {
+    line-height: 36px;
+}

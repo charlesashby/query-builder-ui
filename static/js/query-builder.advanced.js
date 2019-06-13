@@ -1,15 +1,23 @@
 function updateQuerybuilderElements() {
   $('.rules-list .rule-filter-container .input-field > select').formSelect();
   $('.rules-list .rule-operator-container .input-field > select').formSelect();
-  var placeholder;
-  if ($('.rules-list .rule-value-container .input-field > select[multiple] option[value="-1"]').text()) {
-    placeholder = $('.rules-list .rule-value-container .input-field > select[multiple] option[value="-1"]').text();
-    $('.rules-list .rule-value-container .input-field > select[multiple] option[value="-1"]').remove();
-    $('.rules-list .rule-value-container .input-field > select[multiple]').attr('placeholder', placeholder);
-  }
-  $('.rules-list .rule-value-container .input-field > select[multiple]').select2({
-    placeholder: $('.rules-list .rule-value-container .input-field > select[multiple]').attr('placeholder'),
+  $('.rules-list .rule-value-container .input-field > select[multiple]:not(".select2-hidden-accessible")').each(function() {
+    var placeholder;
+    if ($(this).find('option[value="-1"]')) {
+      placeholder = $(this).find('option[value="-1"]').first().text();
+      $(this).find('option[value="-1"]').remove();
+      $(this).attr('placeholder', placeholder);
+    }
+    $(this).select2({placeholder: $(this).attr('placeholder')});
+    $(this).next().find('.select2-search__field').before('<div class="search-icon"><!----><!----><icon size="large" class="large dark ng-star-inserted"><svg viewBox="0 0 24 24"><path d="m 8.9142857,0 a 8.9142857,8.9142857 0 0 1 8.9142853,8.9142857 c 0,2.2080003 -0.809142,4.2377143 -2.139428,5.8011433 l 0.370286,0.370285 1.083428,0 L 24,21.942857 21.942857,24 l -6.857143,-6.857143 0,-1.083428 -0.370285,-0.370286 C 13.152,17.019429 11.122286,17.828571 8.9142857,17.828571 A 8.9142857,8.9142857 0 0 1 0,8.9142857 8.9142857,8.9142857 0 0 1 8.9142857,0 m 0,2.7428571 c -3.4285714,0 -6.1714286,2.7428572 -6.1714286,6.1714286 0,3.4285713 2.7428572,6.1714283 6.1714286,6.1714283 3.4285713,0 6.1714283,-2.742857 6.1714283,-6.1714283 0,-3.4285714 -2.742857,-6.1714286 -6.1714283,-6.1714286 z"></path></svg></icon></div>');
+    $(this).on('select2:select', function (e) {
+      $(this).next().find('.select2-search__field').attr('placeholder', $(this).attr('placeholder'));
+    });
+    $(this).on('select2:open', function(e) {
+      $('.select2-container--open').css({width: '40px'});
+    })
   });
+  
   $('.rules-list .rule-value-container .input-field > select:not([multiple])').formSelect();
   
   $('.query-builder .rules-list .rule-value-container > input.form-control').each(function() {
