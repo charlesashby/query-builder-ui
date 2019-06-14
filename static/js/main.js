@@ -45,6 +45,13 @@ $(document).ready(function(){
             validation: {
               format: 'YYYY/MM/DD'
             },
+            plugin: 'datepicker',
+            plugin_config: {
+                format: 'yyyy/mm/dd',
+                todayBtn: 'linked',
+                todayHighlight: true,
+                autoclose: true
+            },
         }, {
             id: 'id',
             label: 'Identifier',

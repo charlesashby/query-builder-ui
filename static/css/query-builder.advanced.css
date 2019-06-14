@@ -344,6 +344,10 @@ icon.dark {
     position: absolute;
 }
 
-.search-icon icon {
-    line-height: 36px;
+.rules-list .select2-search--inline .search-icon icon {
+    line-height: 26px;
+}
+
+.rules-list .select-wrapper select{
+    display:none;
 }
