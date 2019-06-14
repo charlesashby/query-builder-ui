@@ -31,6 +31,7 @@ $(document).ready(function(){
             id: 'price',
             label: 'Price',
             type: 'double',
+            input: 'text',
             placeholder: 'Enter number (e.g. 3)',
             validation: {
                 min: 0,

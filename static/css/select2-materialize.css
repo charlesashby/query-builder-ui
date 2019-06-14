@@ -62,6 +62,7 @@
 .select2-container .select2-search--inline .select2-search__field {
     box-sizing: border-box;
     border: none;
+    min-width: 300px;
     font-size: 100%;
     margin-top: 5px;
     padding: 0

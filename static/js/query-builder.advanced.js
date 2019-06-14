@@ -47,7 +47,7 @@ function updateQuerybuilderElements() {
     } else {
       $(this).removeClass('no-after');
       $(this).addClass('filter-fixed');
-      $(this).find('input.select-dropdown.dropdown-trigger').attr('disabled', '');
+      //$(this).find('input.select-dropdown.dropdown-trigger').attr('disabled', '');
       operatorEl.removeClass('empty-content');
     }
 
